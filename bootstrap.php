@@ -15,14 +15,15 @@ try {
     // Get Config from ini file
     $config = parse_ini_file(BASE_PATH . '/config/config.ini');
 
-    // Db configuration parameters defined in config.ini file
-    $conn = array(
-        'dbname'   => $config['db']['dbname'],
-        'user'     => $config['db']['user'],
-        'password' => $config['db']['pass'],
-        'host'     => $config['db']['host'],
-        'driver'   => $config['db']['driver'],
-    );
+    /*
+     * Build very basic Mysqli object. Extend with your own class if necessary
+     */
+    $mysql = mysqli_connect(
+        $config['db']['host'],
+        $config['db']['user'],
+        $config['db']['pass'],
+        $config['db']['dbname']
+    ) or die("Error " . mysqli_error($mysql));
 
 } catch (Exception $e) {
     $errorHandler = new \Lib\ErrorHandler();

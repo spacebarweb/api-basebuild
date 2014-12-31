@@ -12,10 +12,48 @@ try {
 
     $test = array();
 
-    // Home Controller
-    $app->get('/users', function () use ($test) {
+    // Get all users
+    $app->get('/users', function () use ($mysql) {
+        $query  = "SELECT * FROM user";
+        $result = $mysql->query($query);
 
+        //Fetch your data from your database
+        $users = array(
+            1 => array(
+                'name'  => 'Manny Acquah',
+                'email' => 'test@test.com',
+                'phone' => '4444444'
+            ),
+            2 => array(
+                'name'  => 'My Fav',
+                'email' => 'fav@test.com',
+                'phone' => '7777777'
+            ),
+        );
+        echo json_encode($users);
+    })->name('users');
 
+    // Get particular user
+    $app->get('/user/:id', function ($id) use ($mysql) {
+        $id    = strip_tags($id);
+        $query = "SELECT * FROM user WHERE id = $id";
+        $row   = $mysql->query($query);
+        echo json_encode($row);
+
+        //Fetch your data from your database
+        $users = array(
+            1 => array(
+                'name'  => 'Manny Acquah',
+                'email' => 'test@test.com',
+                'phone' => '4444444'
+            ),
+            2 => array(
+                'name'  => 'My Fav',
+                'email' => 'fav@test.com',
+                'phone' => '7777777'
+            ),
+        );
+        echo json_encode($users);
     })->name('users');
 
 
