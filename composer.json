@@ -3,7 +3,6 @@
     "type": "project",
     "description": "Api-BaseBuild",
     "require": {
-        "symfony/yaml": "3.0.*@dev",
         "slim/slim": "2.*"
     },
     "autoload": {

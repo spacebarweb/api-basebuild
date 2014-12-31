@@ -1,7 +1,0 @@
-db:
-  host: localhost
-  dbname: api-basebuild
-  user: my_user
-  pass: my_pass
-  driver: pdo_mysql
-  port: 3306

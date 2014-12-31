@@ -8,15 +8,12 @@
 
 define('BASE_PATH', realpath(dirname(__FILE__)));
 
-use Symfony\Component\Yaml\Parser;
-
 try {
     // Autoload Vendor
     require_once 'vendor/autoload.php';
 
     // Get Config from ini file
-    $yaml   = new Parser();
-    $config = $yaml->parse(file_get_contents(BASE_PATH . '/config/config.yml'));
+    $config = parse_ini_file(BASE_PATH . '/config/config.ini');
 
     // Db configuration parameters defined in config.ini file
     $conn = array(
